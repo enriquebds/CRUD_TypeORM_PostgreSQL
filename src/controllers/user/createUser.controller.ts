@@ -5,6 +5,7 @@ import createUser from "../../services/user/createUser";
 const createUserController = async (req: Request, res: Response) => {
   try {
     const user: IUser = req.body;
+
     const createdUser = await createUser(user);
     return res.status(200).json(createdUser);
   } catch (error) {

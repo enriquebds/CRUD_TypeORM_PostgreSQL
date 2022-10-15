@@ -17,14 +17,19 @@ const tokenAuthMiddleware = async (
 
   token = token.split(" ")[1];
 
-  jwt.verify(token, process.env.SECRET_KEY as string, (error, decoded) => {
+  jwt.verify(token, process.env.SECRET_KEY as string, (error, decoded: any) => {
     if (error) {
       return res.status(401).json({
         message: "Invalid token",
       });
     }
 
-    next();
+    req.user = {
+      isAdm: decoded.isAdm,
+      id: decoded.sub,
+    };
+
+    return next();
   });
 };
 
