@@ -5,6 +5,7 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
 } from "typeorm";
+import { Exclude } from "class-transformer";
 
 @Entity("users")
 class User {
@@ -15,6 +16,7 @@ class User {
   email: string;
 
   @Column({ length: 120 })
+  @Exclude()
   password: string;
 
   @Column()

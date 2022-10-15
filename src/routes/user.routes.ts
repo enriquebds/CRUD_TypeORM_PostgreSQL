@@ -4,6 +4,7 @@ import listUsersController from "../controllers/user/listUsers.controller";
 import updateUserController from "../controllers/user/updateUser.controller";
 import tokenAuthMiddleware from "../middleware/tokenAuth.middleware";
 import verifyIsAdmMiddleware from "../middleware/verifyIsAdm.middleware";
+import verifyIsAdmPatchMiddleware from "../middleware/verifyIsAdmPatch.middleware";
 
 const routes = Router();
 
@@ -12,7 +13,7 @@ routes.get("", tokenAuthMiddleware, verifyIsAdmMiddleware, listUsersController);
 routes.patch(
   "/:id",
   tokenAuthMiddleware,
-  verifyIsAdmMiddleware,
+  verifyIsAdmPatchMiddleware,
   updateUserController
 );
 
