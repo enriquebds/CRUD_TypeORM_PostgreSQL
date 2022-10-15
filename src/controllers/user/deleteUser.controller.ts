@@ -9,7 +9,7 @@ const deleteUserController = async (req: Request, res: Response) => {
     return res.status(204).json({ message: "User deleted!" });
   } catch (error) {
     if (error instanceof Error) {
-      return res.status(400).json({
+      return res.status(404).json({
         message: error.message,
       });
     }
