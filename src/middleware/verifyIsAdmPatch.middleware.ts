@@ -11,6 +11,22 @@ const verifyIsAdmPatchMiddleware = async (
     });
   }
 
+  if (req.body.isAdm !== undefined) {
+    return res.status(401).json({
+      message: "Field Unauthorized to Update",
+    });
+  }
+  if (req.body.isActive !== undefined) {
+    return res.status(401).json({
+      message: "Field Unauthorized to Update",
+    });
+  }
+  if (req.body.id !== undefined) {
+    return res.status(401).json({
+      message: "Field Unauthorized to Update",
+    });
+  }
+
   return next();
 };
 
