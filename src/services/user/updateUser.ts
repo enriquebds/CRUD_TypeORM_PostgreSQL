@@ -6,7 +6,7 @@ import { hash } from "bcrypt";
 const updateUser = async (
   { name, email, password }: IUserUpdate,
   id: string
-): Promise<User> => {
+): Promise<User | Array<string | number>> => {
   const userRepository = AppDataSource.getRepository(User);
 
   const findUser = await userRepository.findOneBy({
@@ -14,7 +14,7 @@ const updateUser = async (
   });
 
   if (!findUser) {
-    throw new Error("User not found");
+    return ["User not found", 404];
   }
 
   await userRepository.update(id, {
